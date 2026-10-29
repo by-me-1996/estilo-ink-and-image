@@ -10,7 +10,7 @@ export function SiteHeader() {
         <Link to="/" className="eyebrow">Inicio</Link>
         <Link to="/" className="text-center leading-none">
           <span className="font-display text-2xl tracking-[0.15em] uppercase">Studio</span>
-          <span className="font-script -mt-1 block text-3xl text-primary">Journal</span>
+          <span className="font-script -mt-1 block text-3xl text-primary">By me <span className="font-display text-xs tracking-[0.3em] text-brass">1996</span></span>
         </Link>
         <nav className="flex items-center gap-5">
           {user ? (
@@ -33,7 +33,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-24 bg-burgundy py-16 text-center text-cream">
       <p className="font-script text-5xl text-blush">Gracias por leer</p>
-      <p className="eyebrow mt-6 opacity-70">© {new Date().getFullYear()} Studio Journal</p>
+      <p className="eyebrow mt-6 opacity-70">© {new Date().getFullYear()} STUDIO By me 1996</p>
     </footer>
   );
 }
