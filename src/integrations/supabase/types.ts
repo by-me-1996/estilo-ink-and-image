@@ -19,33 +19,39 @@ export type Database = {
           author_id: string
           category: string
           content: string
+          contributor_name: string | null
           cover_url: string | null
           created_at: string
           excerpt: string
           id: string
           slug: string
+          source: string
           title: string
         }
         Insert: {
           author_id: string
           category?: string
           content?: string
+          contributor_name?: string | null
           cover_url?: string | null
           created_at?: string
           excerpt?: string
           id?: string
           slug: string
+          source?: string
           title: string
         }
         Update: {
           author_id?: string
           category?: string
           content?: string
+          contributor_name?: string | null
           cover_url?: string | null
           created_at?: string
           excerpt?: string
           id?: string
           slug?: string
+          source?: string
           title?: string
         }
         Relationships: []
@@ -58,6 +64,7 @@ export type Database = {
           image_paths: string[]
           message: string
           name: string
+          status: string
           title: string
         }
         Insert: {
@@ -67,6 +74,7 @@ export type Database = {
           image_paths?: string[]
           message: string
           name: string
+          status?: string
           title: string
         }
         Update: {
@@ -76,6 +84,7 @@ export type Database = {
           image_paths?: string[]
           message?: string
           name?: string
+          status?: string
           title?: string
         }
         Relationships: []

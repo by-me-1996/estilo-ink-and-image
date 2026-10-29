@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Un diario editorial de artículos, ideas e imágenes." },
     ],
   }),
-  loader: () => listPosts(),
+  loader: () => listPosts("mine"),
   component: Index,
 });
 

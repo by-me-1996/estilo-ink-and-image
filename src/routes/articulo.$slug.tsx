@@ -46,8 +46,9 @@ function Article() {
   return (
     <article>
       <header className="mx-auto max-w-3xl px-6 pt-20 pb-12 text-center">
-        <p className="eyebrow text-muted-foreground">{post.category} · {formatDate(post.created_at)}</p>
+        <p className="eyebrow text-muted-foreground">{post.source === "community" ? "Voces de lectores" : post.category} · {formatDate(post.created_at)}</p>
         <h1 className="mt-8 font-display text-4xl leading-tight md:text-6xl">{post.title}</h1>
+        {post.contributor_name && <p className="font-script mt-6 text-3xl text-primary">por {post.contributor_name}</p>}
         {post.excerpt && <p className="mx-auto mt-8 max-w-xl text-lg italic text-muted-foreground">{post.excerpt}</p>}
       </header>
       {post.coverSrc && (
