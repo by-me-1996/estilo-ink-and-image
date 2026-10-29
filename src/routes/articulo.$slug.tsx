@@ -38,7 +38,7 @@ function Article() {
   async function remove() {
     if (!confirm("¿Eliminar este artículo?")) return;
     const { error } = await supabase.from("posts").delete().eq("id", post.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Artículo eliminado");
     router.navigate({ to: "/" });
   }

@@ -59,7 +59,7 @@ export async function getPost(slug: string) {
   const sign = await signPaths([post.cover_url ?? "", ...imgPaths]);
   const blocks: Block[] = raw.map((b) => {
     const m = b.match(IMG_RE);
-    return m ? { type: "img", alt: m[1], src: sign(m[2]) } : { type: "p", text: b };
+    return m ? { type: "img", alt: m[1] ?? "", src: sign(m[2] ?? null) } : { type: "p", text: b };
   });
   return { ...post, coverSrc: sign(post.cover_url), blocks };
 }
