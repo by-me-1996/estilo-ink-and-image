@@ -12,6 +12,8 @@ export type Post = {
   content: string;
   cover_url: string | null;
   category: string;
+  source: string;
+  contributor_name: string | null;
   created_at: string;
 };
 
@@ -39,8 +41,8 @@ async function signPaths(paths: string[]) {
   return (p: string | null) => (p ? (p.startsWith("http") ? p : (map[p] ?? null)) : null);
 }
 
-export async function listPosts() {
-  const { data, error } = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+export async function listPosts(source: "mine" | "community" = "mine") {
+  const { data, error } = await supabase.from("posts").select("*").eq("source", source).order("created_at", { ascending: false });
   if (error) throw error;
   const posts = (data ?? []) as Post[];
   const sign = await signPaths(posts.map((p) => p.cover_url ?? ""));
