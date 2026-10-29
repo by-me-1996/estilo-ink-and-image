@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Studio Journal" },
+      { title: "STUDIO By me 1996" },
       { name: "description", content: "Un blog editorial de artículos e imágenes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

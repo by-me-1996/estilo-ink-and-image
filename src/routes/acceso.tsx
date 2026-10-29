@@ -8,9 +8,9 @@ import { useAuth } from "@/hooks/useAuth";
 export const Route = createFileRoute("/acceso")({
   head: () => ({
     meta: [
-      { title: "Acceso — Studio Journal" },
+      { title: "Acceso — STUDIO By me 1996" },
       { name: "description", content: "Entra para escribir y publicar artículos." },
-      { property: "og:title", content: "Acceso — Studio Journal" },
+      { property: "og:title", content: "Acceso — STUDIO By me 1996" },
       { property: "og:description", content: "Entra para escribir y publicar artículos." },
     ],
   }),

@@ -4,9 +4,9 @@ import { listPosts, formatDate } from "@/lib/blog";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Studio Journal — Artículos e imágenes" },
+      { title: "STUDIO By me 1996 — Artículos e imágenes" },
       { name: "description", content: "Un diario editorial de artículos, ideas e imágenes." },
-      { property: "og:title", content: "Studio Journal — Artículos e imágenes" },
+      { property: "og:title", content: "STUDIO By me 1996 — Artículos e imágenes" },
       { property: "og:description", content: "Un diario editorial de artículos, ideas e imágenes." },
     ],
   }),
@@ -20,9 +20,10 @@ function Index() {
   return (
     <>
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
-        <p className="eyebrow text-muted-foreground">Vol. I — Diario editorial</p>
+        <p className="eyebrow text-muted-foreground">Diario editorial</p>
         <h1 className="mt-8 font-display text-6xl uppercase leading-[0.9] md:text-8xl">Studio</h1>
-        <p className="font-script -mt-4 text-6xl text-primary md:-mt-6 md:text-8xl">Journal</p>
+        <p className="font-script -mt-4 text-6xl text-primary md:-mt-6 md:text-8xl">By me</p>
+        <p className="eyebrow mt-4 text-brass">— 1996 —</p>
         <p className="eyebrow mx-auto mt-10 max-w-md leading-relaxed">
           Artículos, imágenes y notas sobre aquello que merece una mirada lenta
         </p>
@@ -32,7 +33,7 @@ function Index() {
         <div className="mx-auto max-w-xl border-t border-border px-6 py-20 text-center">
           <p className="font-script text-4xl text-primary">Aún en blanco</p>
           <p className="mt-4 text-muted-foreground">Todavía no hay artículos publicados.</p>
-          <Link to="/escribir" className="btn-ink mt-8">Escribir el primero</Link>
+          <Link to="/envia" className="btn-ink mt-8">Si tienes algo que contar, envíamelo</Link>
         </div>
       )}
 

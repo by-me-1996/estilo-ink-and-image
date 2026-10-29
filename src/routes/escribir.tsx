@@ -8,9 +8,9 @@ import { slugify, uploadImage } from "@/lib/blog";
 export const Route = createFileRoute("/escribir")({
   head: () => ({
     meta: [
-      { title: "Escribir — Studio Journal" },
+      { title: "Escribir — STUDIO By me 1996" },
       { name: "description", content: "Redacta y publica un nuevo artículo con imágenes." },
-      { property: "og:title", content: "Escribir — Studio Journal" },
+      { property: "og:title", content: "Escribir — STUDIO By me 1996" },
       { property: "og:description", content: "Redacta y publica un nuevo artículo con imágenes." },
       { name: "robots", content: "noindex" },
     ],
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/escribir")({
 });
 
 function Escribir() {
-  const { user, loading } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Journal");
@@ -32,7 +32,7 @@ function Escribir() {
   const textRef = useRef<HTMLTextAreaElement>(null);
 
   if (loading) return null;
-  if (!user)
+  if (!user || !isAdmin)
     return (
       <div className="py-32 text-center">
         <p className="font-script text-5xl text-primary">Solo para autores</p>

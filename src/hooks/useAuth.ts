@@ -4,14 +4,20 @@ import { supabase } from "@/integrations/supabase/client";
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setUser(s?.user ?? null));
-    supabase.auth.getSession().then(({ data }) => {
-      setUser(data.session?.user ?? null);
+    async function apply(u: User | null) {
+      setUser(u);
+      if (u) {
+        const { data } = await supabase.rpc("has_role", { _user_id: u.id, _role: "admin" });
+        setIsAdmin(!!data);
+      } else setIsAdmin(false);
       setLoading(false);
-    });
+    }
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => { void apply(s?.user ?? null); });
+    supabase.auth.getSession().then(({ data }) => apply(data.session?.user ?? null));
     return () => sub.subscription.unsubscribe();
   }, []);
-  return { user, loading };
+  return { user, loading, isAdmin };
 }
