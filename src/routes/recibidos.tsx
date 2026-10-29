@@ -41,7 +41,7 @@ function Recibidos() {
 
   async function remove(id: string) {
     const { error } = await supabase.from("submissions").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setItems((i) => i?.filter((x) => x.id !== id) ?? null);
   }
 
