@@ -7,7 +7,10 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link to="/" className="eyebrow">Inicio</Link>
+        <div className="flex items-center gap-5">
+          <Link to="/" className="eyebrow">Inicio</Link>
+          <Link to="/lectores" className="eyebrow">Voces de lectores</Link>
+        </div>
         <Link to="/" className="text-center leading-none">
           <span className="font-display text-2xl tracking-[0.15em] uppercase">Studio</span>
           <span className="font-script -mt-1 block text-3xl text-primary">By me <span className="font-display text-xs tracking-[0.3em] text-brass">1996</span></span>
