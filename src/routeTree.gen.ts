@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccesoRouteImport } from './routes/acceso'
 import { Route as EnviaRouteImport } from './routes/envia'
 import { Route as EscribirRouteImport } from './routes/escribir'
+import { Route as LectoresRouteImport } from './routes/lectores'
 import { Route as RecibidosRouteImport } from './routes/recibidos'
 import { Route as ArticuloSlugRouteImport } from './routes/articulo.$slug'
 
@@ -36,6 +37,11 @@ const EscribirRoute = EscribirRouteImport.update({
   path: '/escribir',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LectoresRoute = LectoresRouteImport.update({
+  id: '/lectores',
+  path: '/lectores',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecibidosRoute = RecibidosRouteImport.update({
   id: '/recibidos',
   path: '/recibidos',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/acceso': typeof AccesoRoute
   '/envia': typeof EnviaRoute
   '/escribir': typeof EscribirRoute
+  '/lectores': typeof LectoresRoute
   '/recibidos': typeof RecibidosRoute
   '/articulo/$slug': typeof ArticuloSlugRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/acceso': typeof AccesoRoute
   '/envia': typeof EnviaRoute
   '/escribir': typeof EscribirRoute
+  '/lectores': typeof LectoresRoute
   '/recibidos': typeof RecibidosRoute
   '/articulo/$slug': typeof ArticuloSlugRoute
 }
@@ -69,22 +77,36 @@ export interface FileRoutesById {
   '/acceso': typeof AccesoRoute
   '/envia': typeof EnviaRoute
   '/escribir': typeof EscribirRoute
+  '/lectores': typeof LectoresRoute
   '/recibidos': typeof RecibidosRoute
   '/articulo/$slug': typeof ArticuloSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/acceso' | '/envia' | '/escribir' | '/recibidos' | '/articulo/$slug'
+    | '/'
+    | '/acceso'
+    | '/envia'
+    | '/escribir'
+    | '/lectores'
+    | '/recibidos'
+    | '/articulo/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/acceso' | '/envia' | '/escribir' | '/recibidos' | '/articulo/$slug'
+    | '/'
+    | '/acceso'
+    | '/envia'
+    | '/escribir'
+    | '/lectores'
+    | '/recibidos'
+    | '/articulo/$slug'
   id:
     | '__root__'
     | '/'
     | '/acceso'
     | '/envia'
     | '/escribir'
+    | '/lectores'
     | '/recibidos'
     | '/articulo/$slug'
   fileRoutesById: FileRoutesById
@@ -94,6 +116,7 @@ export interface RootRouteChildren {
   AccesoRoute: typeof AccesoRoute
   EnviaRoute: typeof EnviaRoute
   EscribirRoute: typeof EscribirRoute
+  LectoresRoute: typeof LectoresRoute
   RecibidosRoute: typeof RecibidosRoute
   ArticuloSlugRoute: typeof ArticuloSlugRoute
 }
@@ -128,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EscribirRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lectores': {
+      id: '/lectores'
+      path: '/lectores'
+      fullPath: '/lectores'
+      preLoaderRoute: typeof LectoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recibidos': {
       id: '/recibidos'
       path: '/recibidos'
@@ -150,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccesoRoute: AccesoRoute,
   EnviaRoute: EnviaRoute,
   EscribirRoute: EscribirRoute,
+  LectoresRoute: LectoresRoute,
   RecibidosRoute: RecibidosRoute,
   ArticuloSlugRoute: ArticuloSlugRoute,
 }
